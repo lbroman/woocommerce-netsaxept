@@ -152,7 +152,7 @@ class WC_Gateway_Nets_Gateway extends WC_Payment_Gateway {
         $icon_html = $this->icon ? '<img src="' . WC_HTTPS::force_https_url( $this->icon ) . '" alt="' . esc_attr( $this->get_title() ) . '" style="max-width:' . $icon_width . 'px" />' : '';
         return apply_filters( 'woocommerce_gateway_icon', $icon_html, $this->id );
     }
-    
+
     public function neta_response_handler() {
         global $woocommerce;
 
@@ -222,7 +222,7 @@ class WC_Gateway_Nets_Gateway extends WC_Payment_Gateway {
 
         $this->setEnviornMent();
         $this->setTerminal();
-        $this->setOrder($order_id, $order->get_total());
+        $this->setOrder($order, $order_id);
         $this->startRegisterReq();
 
         $RegisterResult = $this->callRegisterSoap();
@@ -271,14 +271,14 @@ class WC_Gateway_Nets_Gateway extends WC_Payment_Gateway {
         );
     }
 
-    public function setOrder($orderNumber, $amount) {
-        $currencyCode = 'NOK';
+    public function setOrder(WC_Order $order, $orderNumber) {
+        $currencyCode = $order->get_currency();
         $force3DSecure = '';
         $ArrayOfItem = '';
         $UpdateStoredPaymentInfo = '';
 
         $this->NetaOrder = new Order(
-                $this->setNetaxeptAmount($amount), $currencyCode, $force3DSecure, $ArrayOfItem, $orderNumber, $UpdateStoredPaymentInfo
+                $this->setNetaxeptAmount($order->get_total()), $currencyCode, $force3DSecure, $ArrayOfItem, $orderNumber, $UpdateStoredPaymentInfo
         );
     }
 
