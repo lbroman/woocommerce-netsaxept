@@ -6,7 +6,7 @@ class Environment {
  public $OS;
  public $WebServicePlatform;
  
- function Environment
+ function __construct
    (
         $Language,
         $OS,

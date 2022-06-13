@@ -8,7 +8,7 @@ class Terminal {
  public $RedirectOnError;
  public $RedirectUrl;
  
- function Terminal
+ function __construct
    (
         $AutoAuth,
         $PaymentMethodList,

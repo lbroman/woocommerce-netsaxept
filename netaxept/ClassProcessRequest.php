@@ -8,7 +8,7 @@ class ProcessRequest {
   public $TransactionId;
   public $TransactionReconRef;
  
-  function ProcessRequest
+  function __construct
   (
     $Description,
     $Operation,

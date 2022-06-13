@@ -10,7 +10,7 @@ class Order {
  public $UpdateStoredPaymentInfo;
 
  
- function Order
+ function __construct
    (
         $Amount,
         $CurrencyCode,

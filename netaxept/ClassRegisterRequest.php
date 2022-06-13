@@ -16,7 +16,7 @@ class RegisterRequest {
  public $TransactionId;
  public $TransactionReconRef;
  
- function RegisterRequest
+ function __construct
    (
         $AvtaleGiro,
         $CardInfo,

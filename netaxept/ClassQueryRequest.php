@@ -5,7 +5,7 @@ class QueryRequest {
  public $TransactionId;
 
  
- function QueryRequest   (
+ function __construct   (
         $TransactionId
    )
    {
