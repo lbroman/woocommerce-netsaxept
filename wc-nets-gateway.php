@@ -147,6 +147,12 @@ class WC_Gateway_Nets_Gateway extends WC_Payment_Gateway {
         );
     }
 
+    public function get_icon() {
+        $icon_width = '72';
+        $icon_html = $this->icon ? '<img src="' . WC_HTTPS::force_https_url( $this->icon ) . '" alt="' . esc_attr( $this->get_title() ) . '" style="max-width:' . $icon_width . 'px" />' : '';
+        return apply_filters( 'woocommerce_gateway_icon', $icon_html, $this->id );
+    }
+    
     public function neta_response_handler() {
         global $woocommerce;
 
