@@ -216,7 +216,7 @@ class WC_Gateway_Nets_Gateway extends WC_Payment_Gateway {
 
         $this->setEnviornMent();
         $this->setTerminal();
-        $this->setOrder($order_id, $order->order_total);
+        $this->setOrder($order_id, $order->get_total());
         $this->startRegisterReq();
 
         $RegisterResult = $this->callRegisterSoap();
@@ -261,7 +261,7 @@ class WC_Gateway_Nets_Gateway extends WC_Payment_Gateway {
 
         ####  TERMINAL OBJECT  ####
         $this->Terminal = new Terminal(
-                $this->autoAuth, $this->paymentMethodList, $language, $this->orderDescription, $this->redirectOnError, $this->redirect_url
+                $this->autoAuth, $this->paymentMethodList, $this->Language, $this->orderDescription, $this->redirectOnError, $this->redirect_url
         );
     }
 
